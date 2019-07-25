@@ -6,8 +6,6 @@
 //  Copyright © 2019 Nicolas Nascimento. All rights reserved.
 //
 
-import UIKit
+import GameplayKit
 
-class RenderComponent: GKComponent {
-
-}
+typealias RenderComponent = GKSKNodeComponent

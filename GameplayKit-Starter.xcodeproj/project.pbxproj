@@ -9,19 +9,31 @@
 /* Begin PBXBuildFile section */
 		0C171D1C22EA24CA00EAA6ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C171D1B22EA24CA00EAA6ED /* AppDelegate.swift */; };
 		0C171D1E22EA24CA00EAA6ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C171D1D22EA24CA00EAA6ED /* ViewController.swift */; };
-		0C171D2122EA24CA00EAA6ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C171D1F22EA24CA00EAA6ED /* Main.storyboard */; };
 		0C171D2322EA24CB00EAA6ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C171D2222EA24CB00EAA6ED /* Assets.xcassets */; };
 		0C171D2622EA24CB00EAA6ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C171D2422EA24CB00EAA6ED /* LaunchScreen.storyboard */; };
+		0C171D3022EA250C00EAA6ED /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C171D2F22EA250C00EAA6ED /* GameScene.swift */; };
+		0C171D3222EA257B00EAA6ED /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C171D3122EA257B00EAA6ED /* EntityManager.swift */; };
+		0C171D3722EA261A00EAA6ED /* RenderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C171D3622EA261A00EAA6ED /* RenderComponent.swift */; };
+		0C171D3922EA268400EAA6ED /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C171D3822EA268400EAA6ED /* Ball.swift */; };
+		0C171D3B22EA26C000EAA6ED /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C171D3A22EA26C000EAA6ED /* SpriteComponent.swift */; };
+		0C171D3D22EA276D00EAA6ED /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C171D3C22EA276D00EAA6ED /* Default-568h@2x.png */; };
+		0C171D3F22EA296100EAA6ED /* ScaleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C171D3E22EA296100EAA6ED /* ScaleComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C171D1822EA24CA00EAA6ED /* GameplayKit-Starter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameplayKit-Starter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C171D1B22EA24CA00EAA6ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C171D1D22EA24CA00EAA6ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0C171D2022EA24CA00EAA6ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0C171D2222EA24CB00EAA6ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C171D2522EA24CB00EAA6ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C171D2722EA24CB00EAA6ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C171D2F22EA250C00EAA6ED /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		0C171D3122EA257B00EAA6ED /* EntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		0C171D3622EA261A00EAA6ED /* RenderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderComponent.swift; sourceTree = "<group>"; };
+		0C171D3822EA268400EAA6ED /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		0C171D3A22EA26C000EAA6ED /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
+		0C171D3C22EA276D00EAA6ED /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		0C171D3E22EA296100EAA6ED /* ScaleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +50,7 @@
 		0C171D0F22EA24CA00EAA6ED = {
 			isa = PBXGroup;
 			children = (
+				0C171D3C22EA276D00EAA6ED /* Default-568h@2x.png */,
 				0C171D1A22EA24CA00EAA6ED /* GameplayKit-Starter */,
 				0C171D1922EA24CA00EAA6ED /* Products */,
 			);
@@ -54,14 +67,51 @@
 		0C171D1A22EA24CA00EAA6ED /* GameplayKit-Starter */ = {
 			isa = PBXGroup;
 			children = (
-				0C171D1B22EA24CA00EAA6ED /* AppDelegate.swift */,
+				0C171D2E22EA250200EAA6ED /* Game */,
+				0C171D2D22EA24D000EAA6ED /* Support */,
 				0C171D1D22EA24CA00EAA6ED /* ViewController.swift */,
-				0C171D1F22EA24CA00EAA6ED /* Main.storyboard */,
 				0C171D2222EA24CB00EAA6ED /* Assets.xcassets */,
 				0C171D2422EA24CB00EAA6ED /* LaunchScreen.storyboard */,
-				0C171D2722EA24CB00EAA6ED /* Info.plist */,
 			);
 			path = "GameplayKit-Starter";
+			sourceTree = "<group>";
+		};
+		0C171D2D22EA24D000EAA6ED /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				0C171D1B22EA24CA00EAA6ED /* AppDelegate.swift */,
+				0C171D2722EA24CB00EAA6ED /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		0C171D2E22EA250200EAA6ED /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				0C171D3422EA25C400EAA6ED /* Components */,
+				0C171D3322EA25BD00EAA6ED /* Entities */,
+				0C171D3122EA257B00EAA6ED /* EntityManager.swift */,
+				0C171D2F22EA250C00EAA6ED /* GameScene.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		0C171D3322EA25BD00EAA6ED /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				0C171D3822EA268400EAA6ED /* Ball.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		0C171D3422EA25C400EAA6ED /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0C171D3622EA261A00EAA6ED /* RenderComponent.swift */,
+				0C171D3A22EA26C000EAA6ED /* SpriteComponent.swift */,
+				0C171D3E22EA296100EAA6ED /* ScaleComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +174,7 @@
 			files = (
 				0C171D2622EA24CB00EAA6ED /* LaunchScreen.storyboard in Resources */,
 				0C171D2322EA24CB00EAA6ED /* Assets.xcassets in Resources */,
-				0C171D2122EA24CA00EAA6ED /* Main.storyboard in Resources */,
+				0C171D3D22EA276D00EAA6ED /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,22 +185,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C171D3022EA250C00EAA6ED /* GameScene.swift in Sources */,
+				0C171D3722EA261A00EAA6ED /* RenderComponent.swift in Sources */,
+				0C171D3F22EA296100EAA6ED /* ScaleComponent.swift in Sources */,
+				0C171D3B22EA26C000EAA6ED /* SpriteComponent.swift in Sources */,
 				0C171D1E22EA24CA00EAA6ED /* ViewController.swift in Sources */,
+				0C171D3222EA257B00EAA6ED /* EntityManager.swift in Sources */,
 				0C171D1C22EA24CA00EAA6ED /* AppDelegate.swift in Sources */,
+				0C171D3922EA268400EAA6ED /* Ball.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0C171D1F22EA24CA00EAA6ED /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0C171D2022EA24CA00EAA6ED /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0C171D2422EA24CB00EAA6ED /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -284,7 +332,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U5ZZWN44AH;
-				INFOPLIST_FILE = "GameplayKit-Starter/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GameplayKit-Starter/Support/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +350,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U5ZZWN44AH;
-				INFOPLIST_FILE = "GameplayKit-Starter/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GameplayKit-Starter/Support/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

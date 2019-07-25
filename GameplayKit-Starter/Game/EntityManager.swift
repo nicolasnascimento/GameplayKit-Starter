@@ -9,41 +9,22 @@
 import GameplayKit
 import SpriteKit
 
-protocol EntityManagerDelegate: class {
-    func levelUp()
-    func gameOver()
-    func countPoint()
-    func beginGame()
-    func gameIsRunning() -> Bool
-}
-
+// The manager for the entities
 final class EntityManager {
-    
-    // The scene where entities will be drawn
-    private weak var scene: SKScene?
-    
-    // The delegate for entity manager items
-    weak var delegate: EntityManagerDelegate?
     
     // The entities from the game
     var entities: [GKEntity] = []
     
+    weak var scene: SKScene?
+    
     /// Designed Initializer
-    init(scene: SKScene,
-         backgroundColor: SKColor = .black,
-         backgroundKind: ParticleComponent.Kind? = nil) {
-        
+    init(scene: SKScene) {
         self.scene = scene
-        
-        // Add scene entity
-        let scene = Scene(scene: scene, backgroundColor: backgroundColor, backgroundKind: backgroundKind)
-        add(entity: scene)
-        scene.delegate = self
     }
     
     /// Make sure to give the opportunity for all objects to update
     func update(with delta: TimeInterval) {
-        self.entities.forEach {
+        entities.forEach {
             $0.update(deltaTime: delta)
         }
     }
@@ -68,20 +49,6 @@ final class EntityManager {
     }
     func removeAllEntities() {
         while let entity = entities.last { remove(entity: entity) }
-    }
-}
-
-// MARK: - Shortcuts
-extension EntityManager {
-    var touchComponents: [TouchComponent] {
-        return entities.compactMap{ $0.component(ofType: TouchComponent.self) }
-    }
-}
-
-// MARK: - Scene Delegate
-extension EntityManager: SceneDelegate {
-    func scene(_ scene: Scene, boundsCrossedBy entity: GKEntity) {
-        remove(entity: entity)
     }
 }
 
