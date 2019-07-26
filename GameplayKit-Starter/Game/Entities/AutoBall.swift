@@ -1,41 +1,40 @@
 //
-//  BasicBall.swift
+//  AutoBall.swift
 //  GameplayKit-Starter
 //
-//  Created by Nicolas Nascimento on 25/07/19.
+//  Created by Nicolas Nascimento on 26/07/19.
 //  Copyright © 2019 Nicolas Nascimento. All rights reserved.
 //
 
 import GameplayKit
 
-final class Ball: GKEntity {
+final class AutoBall: GKEntity {
     
-    override init() {
+    init(following ball: Ball) {
         super.init()
         
         // Render
         let renderComponent = RenderComponent(node: SKNode())
         addComponent(renderComponent)
-        renderComponent.node.position.x += 100
-    
+        
         // Sprite
-        let spriteComponent = SpriteComponent(imageNamed: "red-ball")
+        let spriteComponent = SpriteComponent(imageNamed: "blue-ball")
         addComponent(spriteComponent)
         renderComponent.node.addChild(spriteComponent.spriteNode)
         
-        // Scale
-        let scaleComponent = ScaleComponent(node: renderComponent.node)
-        addComponent(scaleComponent)
-        
         // Autonomous
-        let agentComponent = GKAgent2D()
-        addComponent(agentComponent)
-        agentComponent.position = vector2(Float(renderComponent.node.position.x),
-                                          Float(renderComponent.node.position.y))
-        agentComponent.maxSpeed = 100
-        agentComponent.mass = 0.01
-        agentComponent.behavior = GKBehavior(goals: [GKGoal(toWander: 10)])
-        agentComponent.delegate = self
+        if let otherAgent = ball.component(ofType: GKAgent2D.self) {
+            let agentComponent = GKAgent2D()
+            addComponent(agentComponent)
+            agentComponent.position = vector2(Float(renderComponent.node.position.x),
+                                              Float(renderComponent.node.position.y))
+            agentComponent.maxSpeed = 100
+            agentComponent.mass = 0.01
+            let wanderGoal = GKGoal(toWander: 20)
+            let seekGoal = GKGoal(toSeekAgent: otherAgent)
+            agentComponent.behavior = GKBehavior(goals: [wanderGoal, seekGoal], andWeights: [0.99, 0.01])
+            agentComponent.delegate = self
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,7 +42,10 @@ final class Ball: GKEntity {
     }
 }
 
-extension Ball: GKAgentDelegate {
+// MARK: Agent Delegate
+extension AutoBall: GKAgentDelegate {
+    
+    
     func agentWillUpdate(_ agent: GKAgent) {
         guard let agent = agent as? GKAgent2D, let node = component(ofType: RenderComponent.self)?.node else { return }
         agent.position = vector2(Float(node.position.x),

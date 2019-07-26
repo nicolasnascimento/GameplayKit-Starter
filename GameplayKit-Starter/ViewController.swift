@@ -37,6 +37,9 @@ extension ViewController {
         
         let ball = Ball()
         scene.entityManager.add(entity: ball)
+        
+        let autoball = AutoBall(following: ball)
+        scene.entityManager.add(entity: autoball)
     }
     
 }
