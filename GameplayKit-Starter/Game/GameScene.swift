@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import GameplayKit
 
 final class GameScene: SKScene {
     
@@ -14,7 +15,18 @@ final class GameScene: SKScene {
     var lastTime: TimeInterval = 0.0
     
     // The element which manages entities in the architecture
-    lazy var entityManager = EntityManager(scene: self)
+    lazy var entityManager = EntityManager(scene: world)
+    
+    // The game state machine
+    lazy var stateMachine = GKStateMachine(states: [GameRunningState(scene: self), GamePausedState(scene: self)])
+    
+    // The world node
+    var world: SKNode = SKNode()
+    
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        addChild(world)
+    }
     
     // Time-based update
     override func update(_ currentTime: TimeInterval) {
@@ -38,6 +50,9 @@ final class GameScene: SKScene {
                     scaleComponent.scale(to: 1.0, duration: 1.0)
                 }
             }
+        } else {
+            print(#function)
+            stateMachine.enter(stateMachine.currentState is GameRunningState ? GamePausedState.self : GameRunningState.self)
         }
     }
 }

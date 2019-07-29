@@ -47,13 +47,13 @@ extension AutoBall: GKAgentDelegate {
     
     
     func agentWillUpdate(_ agent: GKAgent) {
-        guard let agent = agent as? GKAgent2D, let node = component(ofType: RenderComponent.self)?.node else { return }
+        guard let agent = agent as? GKAgent2D, let node = component(ofType: RenderComponent.self)?.node, !node.isPaused else { return }
         agent.position = vector2(Float(node.position.x),
                                  Float(node.position.y))
         agent.rotation = Float(node.zRotation)
     }
     func agentDidUpdate(_ agent: GKAgent) {
-        guard let agent = agent as? GKAgent2D, let node = component(ofType: RenderComponent.self)?.node else { return }
+        guard let agent = agent as? GKAgent2D, let node = component(ofType: RenderComponent.self)?.node, !node.isPaused else { return }
         node.position = CGPoint(x: Double(agent.position.x),
                                 y: Double(agent.position.y))
         node.zRotation = CGFloat(agent.rotation)

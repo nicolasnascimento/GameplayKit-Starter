@@ -15,11 +15,11 @@ final class EntityManager {
     // The entities from the game
     var entities: [GKEntity] = []
     
-    weak var scene: SKScene?
+    weak var sceneNode: SKNode?
     
     /// Designed Initializer
-    init(scene: SKScene) {
-        self.scene = scene
+    init(scene: SKNode) {
+        self.sceneNode = scene
     }
     
     /// Make sure to give the opportunity for all objects to update
@@ -36,7 +36,7 @@ final class EntityManager {
     func add(entity: GKEntity) {
         // Gets the component that has the visual part
         if let node = entity.component(ofType: RenderComponent.self)?.node {
-            scene?.addChild(node)
+            sceneNode?.addChild(node)
         }
         entities.append(entity)
     }

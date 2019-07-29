@@ -26,6 +26,7 @@ final class ViewController: UIViewController {
         scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         view.presentScene(scene)
         
+        
         // Creates a set of fake entities
         createFakeEntities(for: scene)
     }
